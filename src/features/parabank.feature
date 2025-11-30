@@ -8,13 +8,13 @@ Feature: ParaBank end-to-end user flows
     #Given User open the ParaBank home page
 
 
-  #@happy-path @open-account
-  #Scenario: Verify Login and Global navigation menu after user registration
-   # Given User open the ParaBank home page
-    #When User register a new unique user
-    #And User login with the newly created user
-    #Then User should be logged in successfully
-    #Then Verify if the Global navigation menu in home page is working as expected
+  @happy-path @open-account
+  Scenario: Verify Login and Global navigation menu after user registration
+    Given User open the ParaBank home page
+    When User register a new unique user
+    And User login with the newly created user
+    Then User should be logged in successfully
+    Then Verify if the Global navigation menu in home page is working as expected
 
 
     @happy-path @open-account
@@ -25,6 +25,7 @@ Feature: ParaBank end-to-end user flows
       Then User should be logged in successfully
       When User navigates to Open New Account page with type as "Savings Account"
       And User creates a new Savings account from an existing account
-      Then A new Savings account should be created successfully with a unique account number
-    
+      When User navigates to Open New Account page with type as "Savings Account"
+      And User creates a new Savings account from an existing account2
+      Then Verify both the newly created account IDs are different    
    

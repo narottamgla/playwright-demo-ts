@@ -56,6 +56,7 @@ export class ParaBankActions {
         await this.registerLoc.regUsername.fill(userName);
         await this.registerLoc.regPassword.fill(password);
         await this.registerLoc.regPasswordRepeat.fill(password);
+        await this.page.waitForTimeout(10000);
         await this.registerLoc.regButton.click();
     }
 
