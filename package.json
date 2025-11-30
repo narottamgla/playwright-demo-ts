@@ -1,0 +1,25 @@
+{
+  "name": "playwright-demo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx playwright test",
+    "test:headed": "npx playwright test --headed",
+    "test:debug": "PWDEBUG=1 npx playwright test",
+    "playwright:install": "npx playwright install",
+    "cucumber": "cucumber-js --require-module ts-node/register --require src/features/step_definitions/**/*.ts src/features/**/*.feature",
+    "format": "prettier --write .",
+    "prepare": "npx playwright install --with-deps"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@cucumber/cucumber": "^12.2.0",
+    "@playwright/test": "^1.57.0",
+    "playwright": "^1.57.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  }
+}
