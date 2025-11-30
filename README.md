@@ -73,25 +73,48 @@ How to navigate from a .feature step to the step definition in VS Code
 1. Open any feature file (e.g., `src/features/parabank.feature`).
 2. Hover or Ctrl/Cmd+Click on the step text or right-click and choose "Go to Definition" / press F12. VS Code (with the recommended extension) should open the matching step definition in `src/features/step_definitions/*.ts`.
 
-Run Cucumber in headed (visible browser) mode
+# Playwright + Cucumber — Quick start
 
-If you want to see the browser UI while running the Cucumber scenarios, set the env var `PARABANK_SHOW_BROWSER=true` or `PWDEBUG=1`. You can also add a small slow-motion delay to make interactions easier to watch using `PARABANK_SLOWMO` (ms). Example:
+Minimal README with just the commands you need to run tests locally.
+
+Prerequisites
+- Node.js 18+ (or a compatible LTS)
+
+Install deps and Playwright browsers
 
 ```bash
-export PARABANK_SHOW_BROWSER=true
-export PARABANK_SLOWMO=60
-npm run cucumber
+npm ci
+npm run playwright:install
 ```
 
-If you prefer Playwright Test runner's headed mode, use the existing script:
+Run Playwright test runner (fast, headless)
+
+```bash
+npm test
+```
+
+Run Playwright tests in headed mode (see the browser visible)
 
 ```bash
 npm run test:headed
 ```
 
-Note: Running against the public ParaBank demo site can be flaky for automated registration. If you want to visually inspect failures or ensure the browser is actually interacting with the site, run the feature in headed mode:
+Run Cucumber features (TypeScript step defs)
 
 ```bash
-export PARABANK_SLOWMO=60
+# default (headed/slow depends on env vars in this repo)
 npm run cucumber
 ```
+
+Helpful options
+- Show the browser during Cucumber runs: PARABANK_SHOW_BROWSER=true
+- Slow down browser actions for visual debugging: PARABANK_SLOWMO=50
+
+Example (headful + slow for debugging):
+
+```bash
+PARABANK_SHOW_BROWSER=true PARABANK_SLOWMO=60 npm run cucumber
+```
+
+Notes
+- The test suite exercises the ParaBank demo site (https://parabank.parasoft.com/). That public demo can be flaky — using headed + slowMo helps when diagnosing issues.
